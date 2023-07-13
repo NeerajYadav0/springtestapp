@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> </meta>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <script src="https://kit.fontawesome.com/b96d968a85.js" crossorigin="anonymous"></script>
+	 <meta th:each="metaTag : ${metaTags}" th:property="${metaTag.property}" th:content="${metaTag.content}"/>
+
+    <style>
+
+
+@font-face{
+  font-family:circular std;
+  font-style:normal;
+  font-weight:450;
+  font-display: swap;
+  src:local('Circular Std'),url("CircularStd-Book.woff") format('woff')
+}
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #fafdff;
+            line-height: 1.5rem;
+            font-family: 'Circular Std', sans-serif;
+            font-weight: 450;
+        }
+@media (min-width: 1000px )and (max-width: 2400px) {
+    .navBarHeight{
+        height: 64px;
+    }
+        .container {
+      max-width: 67%;
+      margin: auto;
+        }
+    .amclogo{
+            width: 200px;
+            margin: auto;
+            height: 63px;
+        }
+    .findButtons{
+        width: 25%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-right: 3rem;
+    }
+
+    .certificateWidth{
+        width: 66.66%;
+    }
+  .profileWidth{
+    width: 24.99%;
+  }
+  }
+
+  @media (min-width: 100px) and (max-width: 1000px) {
+    .navBarHeight{
+        height: auto;
+    }
+    .hidden{
+        display:none
+    }
+    .container {
+      max-width: 100%;
+    }
+    .amclogo{
+        width: 12rem;
+  margin: auto;
+  height: 40px;
+  }
+  .certificateWidth{
+    padding: 10px;
+    width: 100%;
+  }
+  .profileWidth{
+    margin-top: 50px;
+    padding: 10px;
+  }
+  .fullWidth{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  }
+  .navbar{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+   flex-wrap: wrap;
+   background-color: white;
+   margin-bottom: 25px;
+  }
+  .navbarContainer{
+    box-shadow: 0rem 0.19rem 0.5rem rgba(72, 178, 255, 0.16);
+  }
+  a{
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+   
+
+  }
+  .findbutton{
+    text-decoration: none;
+    color: #1f2830;
+    cursor: pointer;
+  }
+
+.loginButtons {
+      background-color: #2196f3;
+      color: white;
+      padding: 0 10px;
+      border: none;
+      border-radius: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .loginButtons:hover {
+      background-color: #0d8bf2;
+    }
+/* .loginButtons{
+    width: 124.109px;
+    height: 36px;
+    background-color: #1d8ff2;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.text{
+    color: white;
+    padding: 5px;
+}
+.certificateContainer{
+    background-color: #fafdff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.certificate{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.profileSection{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.photo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
+}
+.name{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.mui-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  color: #1d8ff2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: inherit;
+  margin-top: 10px;
+}
+
+.start-icon {
+  margin-right: 10px;
+  width: 20px;
+  fill: #1d8ff2;
+}
+.buttonContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.loginDropdown{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px;
+}
+.login-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 0.5rem;
+}
+
+
+
+.login-content a {
+  color: black;
+  padding: 6px 5px;
+  text-decoration: none;
+  display: flex;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 10px;
+  text-decoration: none;
+  display: flex;
+  
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1; ;
+}
+.login-content a:hover {background-color: #f1f1f1; ;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+.loginDropdown:hover .login-content{
+  display: block;
+}
+
+.dropdown:hover  .dropbtn {
+  background-color: #dcdedf;
+}
+.footer{
+    background-color: white;
+    box-shadow: 0.5rem 0.19rem 0.5rem rgba(72, 178, 255, 0.16); ;
+  padding: 20px 0;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;  
+
+}
+.center-mergin{
+  display: flex;
+  align-items: center;
+}
+.div-height{
+  min-height: calc(100vh - 64px);
+  width: 100%;
+}
+  .expert{
+				color:#f45c05;
+			}
+			.proficient{
+				color:#b8eee3;
+			}
+			.intermidiate{
+				color: #febb3a;
+			}
+			.beginner{
+				color:#b239b9
+			}
+
+
+    </style>
+</head>
+<body>
+    <div class="">
+		<div class="div-height">
+        <div class="navbarContainer">
+    <div class="navbar container navBarHeight">
+        <div class="fullWidth">
+            <a href="/find-jobs">
+            <img
+            src='alignmycareer.svg'
+            alt="alignImage"
+            class='amclogo'
+            
+          />
+        </a>
+        </div>
+        <div class="findButtons hidden">
+            <a href="/find-jobs" class="findbutton" >Find Jobs</a>
+            <a href="/find-candidates" class="findbutton" >Find Talent</a>
+        </div>
+        <div class="fullWidth">
+        <div class="loginButtons loginDropdown">
+            <div class="text">
+                Login/Register
+            </div>
+            <div class="login-content">
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+              </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="container certificateContainer">
+    <div class="certificate certificateWidth">
+        <div >
+            <img style= "width: 100%;"  th:src="${certiImg}" />
+          </div>
+          <div th:text="${certiDesc}"></div>
+    </div>
+    <div class="profileSection profileWidth">
+
+        <div style= "font-Weight: bold; font-Size: 20px">Certificate Recipient:</div>
+        <div className='d-flex gap-2 align-items-center' class="name">
+         
+            <img
+            th:src="${candidatePhoto}"
+              class="photo"
+              alt='Candidate Profile'
+            />
+          <span th:text="${candidateName}"></span>
+        </div>
+        <div style= "font-Weight: bold; font-Size: 20px" >
+          About Assessment:
+        </div>
+        <div style= "font-Weight: bold"  th:text="${assessmentName}"></div>
+        <div>
+          <span style= "font-Weight: bold">Description: </span><span style= "color: blue" th:text="${assessmentDesc}"></span>
+        </div>
+        <div>
+          <span style= "font-Weight:bold">Rating: </span><span th:class="${rating=='Expert' ? 'expert' : (rating=='Proficient' ? 'proficient' : (rating=='Intermediate' ? 'intermediate' : (rating=='Beginner' ? 'beginner' : '')))}"	 th:text="${rating}" ></span>
+        </div>
+        <div class="buttonContainer">
+             <div class="loginDropdown">
+            <button class="mui-button">
+                <i class="start-icon material-icons">download</i>
+                <span class="color-1D8FF2">Download</span>
+              </button>
+              <div class="login-content">
+                <a href="/pdf" class="center-mergin"><i class="fa-solid fa-file-pdf" style="margin-right: 6px;"></i>PDF</a>
+                <a href="#" class="center-mergin"><i class="fa-solid fa-image" style="margin-right: 6px;"></i>IMG</a>
+                </div>
+              </div>
+              <div class="dropdown">
+            <button class="mui-button dropbtn">
+                <i class="start-icon material-icons">share</i>
+                <span class="color-1D8FF2">Share</span>
+              </button>
+              <div class="dropdown-content">
+                <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+                <a href="#"> <i class="fa-brands fa-linkedin-in fa-xl"></i></a>
+                </div>
+            </div>
+           <a href="/assessment" style="text-decoration: none;">
+            <button class="mui-button">
+              
+                <i class="start-icon material-icons ">unfold_more</i>
+                <span class="color-1D8FF2">More Assessments</span>
+              
+              </button>
+            </a>
+              
+        </div>
+
+    </div>
+
+</div>
+		</div>
+<div class="footer">
+    All rights reserved &copy;<span id='date'></span> alignmycareer
+</div>
+</div>
+</body>
+<script>
+    var currentYear = new Date().getFullYear();
+    document.getElementById("date").innerText=currentYear;
+</script>
+</html>
